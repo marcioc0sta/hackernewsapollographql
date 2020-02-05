@@ -1,7 +1,9 @@
 import React from "react";
 
+import LinkList from "./LinkList";
+
 function App() {
-  return <div className="App">hackernews apollo react</div>;
+  return <LinkList />;
 }
 
 export default App;
