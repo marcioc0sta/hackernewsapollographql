@@ -1,23 +1,23 @@
 import React from "react";
-import { graphql } from "react-apollo";
+import { useQuery } from "@apollo/react-hooks";
 
-import feedquery from "../queries/feedquery";
+import FEED_QUERY from "../queries/feedquery";
 import Link from "./Link";
 
-const LinkList = ({ data: { loading, error, feed } }) => {
+const LinkList = () => {
+  const { data, loading, error } = useQuery(FEED_QUERY);
+
+  if (loading && !error) {
+    return <div>Is Loading...</div>;
+  }
+
   return (
     <>
-      {!loading && !error ? (
-        <>
-          {feed.links.map(link => (
-            <Link key={link.id} link={link} />
-          ))}
-        </>
-      ) : (
-        <div>Is Loading...</div>
-      )}
+      {data.feed.links.map(link => (
+        <Link key={link.id} link={link} />
+      ))}
     </>
   );
 };
 
-export default graphql(feedquery)(LinkList);
+export default LinkList;

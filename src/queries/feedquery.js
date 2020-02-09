@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const feedquery = gql`
+const FEED_QUERY = gql`
   query FeedQuery {
     feed {
       links {
@@ -13,4 +13,4 @@ const feedquery = gql`
   }
 `;
 
-export default feedquery;
+export default FEED_QUERY;
